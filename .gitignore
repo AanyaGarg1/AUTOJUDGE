@@ -1,0 +1,12 @@
+node_modules/
+frontend/node_modules/
+.DS_Store
+*.json
+!package.json
+!model.json
+!cf_300_metadata.json
+!selected_problems.json
+problems.csv
+.env
+dist/
+build/
