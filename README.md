@@ -1,3 +1,39 @@
+# AUTOJUDGE
+
+Lightweight toolkit for selecting and training models on programming contest problems.
+
+Quick start
+
+- Install dependencies (root and frontend):
+
+```powershell
+cd "C:\Users\Deepak Garg\.gemini\antigravity\scratch\autojudge"
+npm install
+cd frontend
+npm install
+```
+
+- Run tests (if defined):
+
+```powershell
+npm test --if-present
+cd frontend
+npm test --if-present
+```
+
+Repository contents
+
+- `generate_dataset.py`, `train_model.js`, and other project scripts at the repo root.
+- `frontend/` contains a Vite React frontend.
+
+Contributing
+
+Open issues and pull requests on https://github.com/AanyaGarg1/AUTOJUDGE
+
+License
+
+Specify a license in this repository if desired.
+
 # AutoJudge: Predicting Programming Problem Difficulty
 
 **A machine learning system that automatically predicts the difficulty level and score of competitive programming problems using natural language processing.**
@@ -41,12 +77,14 @@ autojudge/
 ## 📊 Dataset
 
 ### Data Source
+
 - **Primary**: Real problem anchors from Codeforces (curated collection of ~25 problems)
 - **Augmentation**: Synthetic dataset generation with algorithmic characteristics
 - **Total Training Size**: 2,080+ samples
 - **Distribution**: Easy (40%), Medium (40%), Hard (20%)
 
 ### Data Attributes
+
 - `title`: Problem title
 - `description`: Problem statement/logic description
 - `input_description`: Input format specification
@@ -55,18 +93,20 @@ autojudge/
 - `class`: Difficulty class (Easy, Medium, Hard)
 
 ### Sample Problems in Dataset
-| Title | Description | Class | Score |
-|-------|-------------|-------|-------|
-| Watermelon | Divide watermelon into two even parts | Easy | 800 |
-| Way Too Long Words | Abbreviate words > 10 chars | Easy | 800 |
-| Yarik and Array | Max sum alternating parity subarray | Easy | 1100 |
-| Queue Sort | Minimum operations to sort array | Medium | 1200 |
+
+| Title              | Description                           | Class  | Score |
+| ------------------ | ------------------------------------- | ------ | ----- |
+| Watermelon         | Divide watermelon into two even parts | Easy   | 800   |
+| Way Too Long Words | Abbreviate words > 10 chars           | Easy   | 800   |
+| Yarik and Array    | Max sum alternating parity subarray   | Easy   | 1100  |
+| Queue Sort         | Minimum operations to sort array      | Medium | 1200  |
 
 ---
 
 ## 🧠 Data Preprocessing
 
 ### Steps Performed
+
 1. **Text Normalization**: Convert all text to lowercase
 2. **Tokenization**: Split text into words using `natural.js` WordTokenizer
 3. **Text Concatenation**: Merge problem description, input description, and output description
@@ -74,6 +114,7 @@ autojudge/
 5. **Feature Scaling**: Features normalized within characteristic ranges
 
 ### Preprocessing Code Location
+
 - [generate_dataset.py](generate_dataset.py) — Dataset generation
 - [train_model.js](train_model.js) — Preprocessing during training (lines 70-140)
 
@@ -83,20 +124,22 @@ autojudge/
 
 The model extracts **7 key features** from problem text:
 
-| # | Feature | Description | Calculation | Typical Range |
-|---|---------|-------------|-------------|----------------|
-| 1 | **Text Length** | Log-scale length of combined text | log(length + 1) | 0–10 |
-| 2 | **Math Symbol Count** | Count of mathematical operators | Regex match count | 0–20+ |
-| 3 | **Math Symbol Ratio** | Proportion of math symbols | count / token_count | 0–1 |
-| 4 | **Vocab Diversity** | Unique words vs total words | unique / total | 0–1 |
-| 5 | **Simple Keywords** | Binary: has "sum", "array", "add", etc. | 0 or 1 | 0–1 |
-| 6 | **Medium Keywords** | Binary: has "sort", "dp", "graph", etc. | 0 or 1 | 0–1 |
-| 7 | **Hard Keywords** | Binary: has "flow", "segment", "FFT", etc. | 0 or 1 | 0–1 |
+| #   | Feature               | Description                                | Calculation         | Typical Range |
+| --- | --------------------- | ------------------------------------------ | ------------------- | ------------- |
+| 1   | **Text Length**       | Log-scale length of combined text          | log(length + 1)     | 0–10          |
+| 2   | **Math Symbol Count** | Count of mathematical operators            | Regex match count   | 0–20+         |
+| 3   | **Math Symbol Ratio** | Proportion of math symbols                 | count / token_count | 0–1           |
+| 4   | **Vocab Diversity**   | Unique words vs total words                | unique / total      | 0–1           |
+| 5   | **Simple Keywords**   | Binary: has "sum", "array", "add", etc.    | 0 or 1              | 0–1           |
+| 6   | **Medium Keywords**   | Binary: has "sort", "dp", "graph", etc.    | 0 or 1              | 0–1           |
+| 7   | **Hard Keywords**     | Binary: has "flow", "segment", "FFT", etc. | 0 or 1              | 0–1           |
 
 ### Feature Extraction Code
+
 [server.js](server.js) — `extractFeatures()` function (lines 26–68)
 
 ### Feature Intuition
+
 - **Easy problems**: Shorter text (log-length ~3–5), few math symbols, simple keywords only
 - **Medium problems**: Moderate length (log-length ~5–7), mentions sorting/trees/graphs, some math
 - **Hard problems**: Longer text (log-length ~7–9), high math density, advanced keywords (flow, decomposition, FFT)
@@ -106,6 +149,7 @@ The model extracts **7 key features** from problem text:
 ## 🤖 Models Used
 
 ### 1. Classification Model (Difficulty Class Prediction)
+
 - **Algorithm**: Random Forest Classifier
 - **Library**: `ml-random-forest` v2.1.0
 - **Configuration**: 200 trees, max depth 20
@@ -114,6 +158,7 @@ The model extracts **7 key features** from problem text:
 - **Task**: Multi-class classification
 
 ### 2. Regression Model (Difficulty Score Prediction)
+
 - **Algorithm**: Random Forest Regressor
 - **Library**: `ml-random-forest` v2.1.0
 - **Configuration**: 200 trees, max depth 20
@@ -122,6 +167,7 @@ The model extracts **7 key features** from problem text:
 - **Task**: Continuous value prediction
 
 ### Why Random Forest?
+
 - ✅ Handles non-linear relationships in problem difficulty
 - ✅ Robust to feature outliers
 - ✅ Good generalization on mixed real + synthetic data
@@ -134,6 +180,7 @@ The model extracts **7 key features** from problem text:
 ## 📈 Experimental Setup & Results
 
 ### Training Configuration
+
 - **Script**: [train_model.js](train_model.js)
 - **Dataset Size**: 2,080 samples
 - **Train/Validation Split**: All samples evaluated (training set evaluation)
@@ -143,20 +190,22 @@ The model extracts **7 key features** from problem text:
 ### Evaluation Results
 
 #### Classification Metrics
-| Metric | Value |
-|--------|-------|
-| **Overall Accuracy** | **99.95%** ⭐ |
-| **Easy - Precision** | 100% |
-| **Easy - Recall** | 100% |
-| **Easy - F1-Score** | 1.00 |
-| **Medium - Precision** | 100% |
-| **Medium - Recall** | 99.84% |
-| **Medium - F1-Score** | 0.9992 |
-| **Hard - Precision** | 99.83% |
-| **Hard - Recall** | 100% |
-| **Hard - F1-Score** | 0.9992 |
+
+| Metric                 | Value         |
+| ---------------------- | ------------- |
+| **Overall Accuracy**   | **99.95%** ⭐ |
+| **Easy - Precision**   | 100%          |
+| **Easy - Recall**      | 100%          |
+| **Easy - F1-Score**    | 1.00          |
+| **Medium - Precision** | 100%          |
+| **Medium - Recall**    | 99.84%        |
+| **Medium - F1-Score**  | 0.9992        |
+| **Hard - Precision**   | 99.83%        |
+| **Hard - Recall**      | 100%          |
+| **Hard - F1-Score**    | 0.9992        |
 
 #### Confusion Matrix
+
 ```
 Predicted:     Easy    Medium    Hard    | Total
 ─────────────────────────────────────────┼──────
@@ -168,29 +217,34 @@ Total          872      636      572    | 2080
 ```
 
 **Interpretation:**
+
 - Easy problems: 100% correctly classified
 - Medium problems: 99.84% correctly classified (1 misclassified as Hard)
 - Hard problems: 100% correctly classified
 - **Only 1 error across all 2,080 samples!**
 
 #### Regression Metrics
-| Metric | Value | Status |
-|--------|-------|--------|
-| **Mean Absolute Error (MAE)** | **17.23 points** | ⭐ Excellent |
+
+| Metric                             | Value            | Status       |
+| ---------------------------------- | ---------------- | ------------ |
+| **Mean Absolute Error (MAE)**      | **17.23 points** | ⭐ Excellent |
 | **Root Mean Squared Error (RMSE)** | **20.66 points** | ⭐ Excellent |
 
 **Interpretation:**
+
 - Average prediction error is only ±17.23 points on Codeforces scale
 - 95% of predictions are within ±50 points
 - Relative error: 17.23 / 1500 (midpoint) = **1.15%**
 
 ### Performance Analysis
+
 - **Classification**: Exceptional accuracy (99.95%) due to excellent feature separation between difficulty levels
 - **Regression**: Outstanding accuracy (MAE 17.23) — predictions typically within ±20 points of actual rating
 - **Generalization**: Near-perfect performance on training set indicates strong model quality
 - **Real-world viability**: Model is ready for deployment on competitive programming platforms
 
 ### Metrics Logging
+
 All metrics (accuracy, confusion matrix, per-class precision/recall/F1, MAE, RMSE) are computed and logged during training.
 View detailed metrics in [metrics.json](metrics.json)
 
@@ -199,22 +253,26 @@ View detailed metrics in [metrics.json](metrics.json)
 ## 🚀 How to Run the Project Locally
 
 ### Prerequisites
+
 - **Node.js**: v16 or higher ([Download](https://nodejs.org/))
 - **npm**: Bundled with Node.js
 - **Python 3.x**: Optional (only for regenerating datasets)
 
 ### Step 1: Clone the Repository
+
 ```bash
 git clone https://github.com/YOUR-USERNAME/autojudge.git
 cd autojudge
 ```
 
 ### Step 2: Install Backend Dependencies
+
 ```bash
 npm install
 ```
 
 **Installed packages:**
+
 - `express` — Web server framework
 - `cors` — Cross-origin request handling
 - `ml-random-forest` — ML algorithms
@@ -222,12 +280,15 @@ npm install
 - `csv-parser`, `csv-writer` — Data I/O
 
 ### Step 3: Train the Model (Optional)
+
 Only needed if you modify the dataset or want to retrain:
+
 ```bash
 node train_model.js
 ```
 
 **Output:**
+
 ```
 Starting training with 2080 samples...
 Classifier trained.
@@ -253,11 +314,13 @@ EVALUATION METRICS (on Training Set)
 A pre-trained model is provided in [model.json](model.json), so this step is optional.
 
 ### Step 4: Start the Backend Server
+
 ```bash
 node server.js
 ```
 
 **Expected Output:**
+
 ```
 Model loaded successfully.
 Server running on port 5000
@@ -266,17 +329,20 @@ Server running on port 5000
 The API is now live at `http://localhost:5000`
 
 ### Step 5: Install Frontend Dependencies
+
 ```bash
 cd frontend
 npm install
 ```
 
 ### Step 6: Start the Frontend Development Server
+
 ```bash
 npm run dev
 ```
 
 **Expected Output:**
+
 ```
   VITE v5.x.x ready in XXX ms
 
@@ -285,6 +351,7 @@ npm run dev
 ```
 
 ### Step 7: Open in Browser
+
 Navigate to **http://localhost:5173/**
 
 The AutoJudge web interface is now running locally!
@@ -296,24 +363,30 @@ The AutoJudge web interface is now running locally!
 ### User Interface Components
 
 #### Input Section
+
 Three main text input areas:
+
 1. **Problem Description**: Main problem statement/logic (e.g., "Find maximum sum of alternating parity subarray")
 2. **Input Description**: Input format specification (e.g., "n integers, t test cases")
 3. **Output Description**: Expected output format (e.g., "single integer (maximum sum)")
 4. **Predict Difficulty Button**: Triggers ML prediction
 
 #### Output Section
+
 **Result Card** displays:
+
 - **Predicted Class**: Badge showing Easy (🟢), Medium (🟡), or Hard (🔴)
 - **Difficulty Score**: Numerical prediction (e.g., 1400 points)
 
 **AI Analysis Breakdown:**
+
 - **Text Density**: Character count of the problem description
 - **Math Symbols**: Count of detected mathematical operators
 - **Vocab Diversity**: Percentage of unique words relative to total
 - **Algorithmic Indicators**: Tags like "simple", "medium", "hard" (if detected)
 
 ### Design Features
+
 - **Glassmorphism**: Modern frosted glass UI with backdrop blur effects
 - **Real-time Feedback**: Instant predictions with "Analyzing..." loading state
 - **Responsive Layout**: Works on desktop and tablet screens
@@ -323,6 +396,7 @@ Three main text input areas:
 ### Sample Predictions
 
 #### Example 1 — Easy Problem
+
 ```
 Input:
   Description: "Given two numbers, find their sum"
@@ -339,6 +413,7 @@ Output:
 ```
 
 #### Example 2 — Medium Problem
+
 ```
 Input:
   Description: "Sort array and find median using sorting"
@@ -355,6 +430,7 @@ Output:
 ```
 
 #### Example 3 — Hard Problem
+
 ```
 Input:
   Description: "Compute minimum cost maximum flow using successive shortest paths"
@@ -375,6 +451,7 @@ Output:
 ## 📹 Demo Video
 
 **Requirements Met:**
+
 - Duration: 2–3 minutes
 - Content:
   1. Project overview and problem statement
@@ -383,6 +460,7 @@ Output:
   4. Results and evaluation metrics discussion
 
 **Demo Video Link**: [Your Video URL Here]
+
 - **Platform**: YouTube / Google Drive / etc.
 - **Status**: ✅ Uploaded and publicly accessible
 - **Shows**: Project running locally without errors
@@ -391,16 +469,16 @@ Output:
 
 ## 👤 Project Information
 
-| Field | Details |
-|-------|---------|
-| **Project Name** | AutoJudge |
-| **Author** | [Your Full Name] |
-| **Student ID** | [Your ID Number] |
-| **Email** | [Your Email Address] |
-| **University** | [Your University] |
-| **Club/Department** | [Club Name] |
-| **Submission Date** | January 1, 2026 |
-| **GitHub Repository** | [Link to your repo] |
+| Field                 | Details              |
+| --------------------- | -------------------- |
+| **Project Name**      | AutoJudge            |
+| **Author**            | [Your Full Name]     |
+| **Student ID**        | [Your ID Number]     |
+| **Email**             | [Your Email Address] |
+| **University**        | [Your University]    |
+| **Club/Department**   | [Club Name]          |
+| **Submission Date**   | January 1, 2026      |
+| **GitHub Repository** | [Link to your repo]  |
 
 ---
 
@@ -409,6 +487,7 @@ Output:
 This GitHub repository contains:
 
 ### Source Code ✅
+
 - [frontend/](frontend/) — React + Vite web interface
 - [server.js](server.js) — Express API backend
 - [train_model.js](train_model.js) — Model training with metrics
@@ -417,10 +496,12 @@ This GitHub repository contains:
 - [metrics.json](metrics.json) — Training evaluation metrics
 
 ### Documentation ✅
+
 - [README.md](README.md) — Complete project documentation (this file)
 - [report.pdf](report.pdf) — Detailed 4–8 page project report
 
 ### Requirements Checklist ✅
+
 - [x] **Complete source code** (preprocessing, feature extraction, classification, regression, web UI)
 - [x] **Saved trained models** (model.json with classifier and regressor)
 - [x] **Comprehensive README** (project overview, dataset, approach, metrics, run steps, UI explanation)
@@ -434,6 +515,7 @@ This GitHub repository contains:
 ## 🔗 Dependencies
 
 ### Backend (Node.js)
+
 ```json
 {
   "cors": "^2.8.5",
@@ -446,6 +528,7 @@ This GitHub repository contains:
 ```
 
 ### Frontend (React)
+
 ```json
 {
   "react": "^19.2.0",
@@ -454,6 +537,7 @@ This GitHub repository contains:
 ```
 
 ### Frontend DevDependencies
+
 ```json
 {
   "@vitejs/plugin-react": "^5.1.1",
@@ -466,6 +550,7 @@ This GitHub repository contains:
 ## 📞 Support & Questions
 
 For any clarifications regarding:
+
 - **Model approach**: See "Models Used" and "Feature Engineering" sections
 - **Results interpretation**: See "Experimental Setup & Results" section
 - **Running locally**: See "How to Run" section
