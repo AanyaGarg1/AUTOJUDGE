@@ -211,6 +211,99 @@ const modelData = {
 fs.writeFileSync('model.json', JSON.stringify(modelData));
 console.log("Final Calibrated Models saved.");
 
+// ===== EVALUATION METRICS =====
+console.log("\n" + "=".repeat(60));
+console.log("EVALUATION METRICS (on Training Set)");
+console.log("=".repeat(60));
+
+// Classification Metrics
+const classifierPredictions = classifier.predict(X);
+let correctClassifications = 0;
+const confusionMatrix = {
+    "0_0": 0, "0_1": 0, "0_2": 0,  // Easy predictions
+    "1_0": 0, "1_1": 0, "1_2": 0,  // Medium predictions
+    "2_0": 0, "2_1": 0, "2_2": 0   // Hard predictions
+};
+
+const classLabels = { 0: "Easy", 1: "Medium", 2: "Hard" };
+const perClassMetrics = { 0: { tp: 0, fp: 0, fn: 0 }, 1: { tp: 0, fp: 0, fn: 0 }, 2: { tp: 0, fp: 0, fn: 0 } };
+
+for (let i = 0; i < X.length; i++) {
+    const predicted = classifierPredictions[i];
+    const actual = yClass[i];
+    
+    if (predicted === actual) {
+        correctClassifications++;
+        perClassMetrics[actual].tp++;
+    } else {
+        perClassMetrics[actual].fn++;
+        perClassMetrics[predicted].fp++;
+    }
+    
+    confusionMatrix[`${actual}_${predicted}`]++;
+}
+
+const classificationAccuracy = (correctClassifications / X.length * 100).toFixed(2);
+console.log(`\n📊 Classification Accuracy: ${classificationAccuracy}%`);
+
+console.log("\n📈 Confusion Matrix:");
+console.log("                Predicted Easy | Predicted Medium | Predicted Hard");
+console.log(`Actual Easy:    ${String(confusionMatrix["0_0"]).padStart(14)} | ${String(confusionMatrix["0_1"]).padStart(16)} | ${String(confusionMatrix["0_2"]).padStart(14)}`);
+console.log(`Actual Medium:  ${String(confusionMatrix["1_0"]).padStart(14)} | ${String(confusionMatrix["1_1"]).padStart(16)} | ${String(confusionMatrix["1_2"]).padStart(14)}`);
+console.log(`Actual Hard:    ${String(confusionMatrix["2_0"]).padStart(14)} | ${String(confusionMatrix["2_1"]).padStart(16)} | ${String(confusionMatrix["2_2"]).padStart(14)}`);
+
+console.log("\n📋 Per-Class Metrics (Precision, Recall, F1-Score):");
+for (let classIdx = 0; classIdx < 3; classIdx++) {
+    const tp = perClassMetrics[classIdx].tp;
+    const fp = perClassMetrics[classIdx].fp;
+    const fn = perClassMetrics[classIdx].fn;
+    
+    const precision = tp + fp > 0 ? (tp / (tp + fp) * 100).toFixed(2) : "0.00";
+    const recall = tp + fn > 0 ? (tp / (tp + fn) * 100).toFixed(2) : "0.00";
+    const f1 = precision > 0 && recall > 0 ? (2 * (precision * recall) / (parseFloat(precision) + parseFloat(recall))).toFixed(2) : "0.00";
+    
+    console.log(`  ${classLabels[classIdx].padEnd(8)}: Precision=${precision}% | Recall=${recall}% | F1=${f1}`);
+}
+
+// Regression Metrics
+const regressorPredictions = regressor.predict(X);
+let maeSum = 0;
+let rmseSum = 0;
+
+for (let i = 0; i < X.length; i++) {
+    const error = Math.abs(regressorPredictions[i] - yScore[i]);
+    maeSum += error;
+    rmseSum += error * error;
+}
+
+const mae = (maeSum / X.length).toFixed(2);
+const rmse = Math.sqrt(rmseSum / X.length).toFixed(2);
+
+console.log(`\n📉 Regression Metrics:`);
+console.log(`  Mean Absolute Error (MAE): ${mae}`);
+console.log(`  Root Mean Squared Error (RMSE): ${rmse}`);
+
+// Save metrics to file
+const metrics = {
+    timestamp: new Date().toISOString(),
+    trainingSetSize: X.length,
+    classificationAccuracy: parseFloat(classificationAccuracy),
+    confusionMatrix,
+    perClassMetrics: {
+        Easy: { tp: perClassMetrics[0].tp, fp: perClassMetrics[0].fp, fn: perClassMetrics[0].fn },
+        Medium: { tp: perClassMetrics[1].tp, fp: perClassMetrics[1].fp, fn: perClassMetrics[1].fn },
+        Hard: { tp: perClassMetrics[2].tp, fp: perClassMetrics[2].fp, fn: perClassMetrics[2].fn }
+    },
+    regressionMetrics: {
+        mae: parseFloat(mae),
+        rmse: parseFloat(rmse)
+    }
+};
+
+fs.writeFileSync('metrics.json', JSON.stringify(metrics, null, 2));
+console.log("\n✅ Metrics saved to metrics.json");
+console.log("=".repeat(60) + "\n");
+
 // Diagnostic tests
 const tests = [
     { text: "add two numbers", expected: "Easy" },

@@ -1,3 +1,41 @@
+# Node
+node_modules/
+dist/
+build/
+npm-debug.log*
+yarn-error.log
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+ENV/
+venv.bak/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
+
+# Env files
+.env
+.env.*
+
+# Coverage
+.coverage
+coverage/
+htmlcov/
+
+# Logs
+*.log
+
+# Misc
+*.tgz
+*.swp
 node_modules/
 frontend/node_modules/
 .DS_Store
