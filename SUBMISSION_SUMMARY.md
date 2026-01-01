@@ -159,12 +159,12 @@ Your model achieves:
 
 ### 1. **Fill in Student Information** (5 minutes)
 Edit [README.md](README.md) and update:
-- `[Your Full Name]` → Your name
-- `[Your ID Number]` → Your student ID
-- `[Your Email Address]` → Your email
-- `[Your University]` → University name
-- `[Club Name]` → Club name
-- `[Link to your repo]` → GitHub URL
+- `Aanya Garg` → Aanya Garg (24323001)
+- `24323001` → Student ID
+- ` ` → Email (optional)
+- `Indian Institute of Technology, Roorkee` → University
+- `ACM` → Club/Department
+- `https://github.com/AanyaGarg1/AUTOJUDGE` → GitHub URL
 
 ### 2. **Record Demo Video** (15–30 minutes)
 Follow the guide in [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md):

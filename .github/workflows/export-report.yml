@@ -1,25 +1,6 @@
-name: Export REPORT to PDF
+## DISABLED: Export REPORT to PDF
 
-on:
-  workflow_dispatch: {}
-
-jobs:
-  export:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install pandoc and LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-recommended texlive-xetex
-
-      - name: Convert REPORT.md to PDF
-        run: |
-          pandoc REPORT.md -o REPORT.pdf
-
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: REPORT-pdf
-          path: REPORT.pdf
+# This workflow was added temporarily to help convert `REPORT.md` to PDF.
+# At the repository owner's request it has been disabled to avoid creating
+# public artifacts. If you want to remove this file entirely, delete it.
+# To convert locally, use one of the methods described in the project README.

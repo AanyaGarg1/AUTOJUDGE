@@ -472,11 +472,11 @@ Output:
 | Field                 | Details              |
 | --------------------- | -------------------- |
 | **Project Name**      | AutoJudge            |
-| **Author**            | [Your Full Name]     |
-| **Student ID**        | [Your ID Number]     |
-| **Email**             | [Your Email Address] |
-| **University**        | [Your University]    |
-| **Club/Department**   | [Club Name]          |
+| **Author**            | Aanya Garg           |
+| **Student ID**        | 24323001             |
+| **Email**             |                      |
+| **University**        | Indian Institute of Technology, Roorkee |
+| **Club/Department**   | ACM                  |
 | **Submission Date**   | January 1, 2026      |
 | **GitHub Repository** | [Link to your repo]  |
 

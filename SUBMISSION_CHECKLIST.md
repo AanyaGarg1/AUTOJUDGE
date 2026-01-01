@@ -10,6 +10,7 @@
 Your university requires:
 
 ### 1. ✅ Complete Source Code
+
 - [x] Data preprocessing (`generate_dataset.py`, `train_model.js`)
 - [x] Feature extraction (`server.js`, `train_model.js`)
 - [x] Classification model (Random Forest Classifier in `train_model.js`)
@@ -22,6 +23,7 @@ Your university requires:
 ---
 
 ### 2. ✅ README.md (Comprehensive Documentation)
+
 - [x] Project overview
 - [x] Dataset description (size, source, attributes)
 - [x] Approach and models used (Random Forest for classification & regression)
@@ -39,6 +41,7 @@ Your university requires:
 ---
 
 ### 3. ✅ Saved Trained Models
+
 - [x] Classification model file: `model.json`
 - [x] Regression model file: `model.json`
 - [x] Metrics file: `metrics.json` (generated during training)
@@ -48,9 +51,11 @@ Your university requires:
 ---
 
 ### 4. ✅ Detailed Project Report (4–8 Pages)
+
 **File**: `REPORT.md` (can be converted to PDF)
 
 **Includes:**
+
 - [x] Problem statement (Why is this problem important?)
 - [x] Dataset description (Source, size, distribution, attributes)
 - [x] Data preprocessing steps (Normalization, tokenization, etc.)
@@ -73,7 +78,9 @@ Your university requires:
 ---
 
 ### 5. ✅ Demo Video (2–3 Minutes)
+
 **Requirements:**
+
 - [x] Duration: 2–3 minutes
 - [x] Brief project explanation
 - [x] Model approach walkthrough
@@ -87,6 +94,7 @@ Your university requires:
 ## 📂 File Checklist
 
 ### Source Code Files
+
 - [x] `frontend/src/App.jsx` — React main component
 - [x] `frontend/src/App.css` — UI styling
 - [x] `frontend/src/main.jsx` — React entry point
@@ -101,11 +109,13 @@ Your university requires:
 - [x] `.gitignore` — (Recommended: exclude node_modules/)
 
 ### Documentation Files
+
 - [x] `README.md` — Comprehensive project documentation
 - [x] `REPORT.md` — Detailed 4–8 page report (convert to PDF for submission)
 - [x] `SUBMISSION_CHECKLIST.md` — This file
 
 ### Configuration Files
+
 - [x] `frontend/vite.config.js` — Vite build config
 - [x] `frontend/eslint.config.js` — Linting config (optional)
 
@@ -114,6 +124,7 @@ Your university requires:
 ## 🚀 Pre-Submission Testing Checklist
 
 ### Backend Setup
+
 - [ ] **Step 1**: Install Node.js (v16+)
 - [ ] **Step 2**: Run `npm install` in root directory
 - [ ] **Step 3**: Run `node train_model.js` (should complete in 2–3 seconds)
@@ -128,6 +139,7 @@ Your university requires:
   - Expected response: JSON with `problem_class` and `problem_score`
 
 ### Frontend Setup
+
 - [ ] **Step 6**: In `frontend/` directory, run `npm install`
 - [ ] **Step 7**: Run `npm run dev`
   - Expected output: "VITE v... ready in ... ms" + "Local: http://localhost:5173/"
@@ -135,6 +147,7 @@ Your university requires:
   - Should see beautiful UI with three textareas and predict button
 
 ### Functional Testing
+
 - [ ] **Test 1**: Input easy problem, verify output shows "Easy" with score ~800–1200
 - [ ] **Test 2**: Input medium problem, verify output shows "Medium" with score ~1300–1900
 - [ ] **Test 3**: Input hard problem, verify output shows "Hard" with score ~2000+
@@ -143,6 +156,7 @@ Your university requires:
 - [ ] **Test 6**: Verify responsive design (open DevTools, test mobile viewport)
 
 ### Documentation Verification
+
 - [ ] [ ] README.md is complete and accurate
 - [ ] [ ] REPORT.md contains all required sections
 - [ ] [ ] model.json exists and is valid JSON
@@ -158,17 +172,20 @@ Your university requires:
 ### Video Content Structure (2–3 minutes)
 
 #### Segment 1: Introduction (0:00–0:20)
+
 - **What to show:**
   - Brief title screen: "AutoJudge - Predicting Programming Problem Difficulty"
   - 1-2 sentence explanation: "This project uses machine learning to automatically predict the difficulty of programming problems based on their text descriptions."
   - Visual: Show the problem statement slide
 
 **Script:**
+
 > "AutoJudge is an intelligent system that automatically predicts the difficulty level and score of competitive programming problems using machine learning and natural language processing. The system analyzes problem descriptions and uses 7 engineered features to classify problems as Easy, Medium, or Hard."
 
 ---
 
 #### Segment 2: Model Approach (0:20–0:50)
+
 - **What to show:**
   - Open README.md, show "Feature Engineering" section
   - Show the 7 features table:
@@ -183,11 +200,13 @@ Your university requires:
   - Show results: 98.6% accuracy, MAE ~85
 
 **Script:**
+
 > "The model uses 7 features extracted from problem text: Text length indicates complexity - longer problems are harder. Math symbols like ∑ and ∏ appear more in hard problems. Algorithmic keywords like 'dp', 'flow', and 'graph' strongly predict difficulty level. We trained a Random Forest classifier to predict the difficulty class and a regressor to predict the numerical score. The model achieved 98.6% classification accuracy and a mean absolute error of 85 points on the Codeforces scale."
 
 ---
 
 #### Segment 3: Live Web UI Demo (0:50–2:30)
+
 - **What to show:**
   - Start both backend and frontend servers
   - Open browser to http://localhost:5173
@@ -210,6 +229,7 @@ Your university requires:
   - Show "AI Analysis Breakdown" with diagnostics for each prediction
 
 **Script (for each prediction):**
+
 > "Let's test the system with a few examples. Here's an easy problem about summing two numbers. The model instantly predicts 'Easy' with a score of 850. The AI analysis shows low text density, no math symbols, and simple keywords detected."
 
 > "Now, a medium problem about sorting and finding majority elements. The prediction shows 'Medium' with a score of 1300, identifying the algorithmic component."
@@ -219,17 +239,20 @@ Your university requires:
 ---
 
 #### Segment 4: Closing (2:30–3:00)
+
 - **What to show:**
   - Brief screenshot of README
   - Mention evaluation metrics once more
   - Call to action: "Project available on GitHub with full source code and documentation"
 
 **Script:**
+
 > "The AutoJudge system successfully demonstrates that problem difficulty can be automatically predicted from text descriptions. The 98.6% classification accuracy and 85-point MAE on the Codeforces scale show the model's effectiveness. All source code, trained models, and documentation are available on GitHub. Thank you!"
 
 ---
 
 ### Video Recording Tips
+
 1. **Record at 1080p (1920×1080)** for clarity
 2. **Use a screen recorder**: OBS, Camtasia, ScreenFlow, or built-in tools
 3. **Speak clearly** and at a moderate pace
@@ -242,18 +265,21 @@ Your university requires:
 ---
 
 ### Video Upload & Sharing
+
 1. **Upload to YouTube** (unlisted or public) or **Google Drive** (shared link)
 2. **Get shareable link** from platform
 3. **Add link to README.md** under "Demo Video Link" section
 4. **Test link** before submission to ensure it's accessible
 
 **Example README entry:**
+
 ```markdown
 ## 📹 Demo Video Link
 
 **Duration**: 2:45 minutes
 
 **Video Contents:**
+
 - Project overview and problem statement
 - Feature engineering approach (7 features)
 - Random Forest model architecture
@@ -261,6 +287,7 @@ Your university requires:
 - Results and evaluation metrics
 
 **Watch Demo**: [https://youtu.be/YOUR-VIDEO-ID](https://youtu.be/YOUR-VIDEO-ID)
+
 - **Status**: ✅ Public, accessible to evaluators
 - **Platform**: YouTube
 ```
@@ -272,21 +299,24 @@ Your university requires:
 ### Before Final Push
 
 1. **Update README fields:**
-   - [ ] Replace `[Your Full Name]` with actual name
-   - [ ] Replace `[Your Student ID]` with ID
-   - [ ] Replace `[Your Email]` with email
-   - [ ] Replace `[Your University]` with university name
-   - [ ] Replace `[Club Name]` with club name
-   - [ ] Replace `[Link to your repo]` with actual GitHub URL
-   - [ ] Replace `[Your Video URL Here]` with demo video link
+
+  - [x] Replace `[Your Full Name]` with actual name — `Aanya Garg`
+  - [x] Replace `[Your Student ID]` with ID — `24323001`
+  - [ ] Replace `[Your Email]` with email
+  - [x] Replace `[Your University]` with university name — `Indian Institute of Technology, Roorkee`
+  - [x] Replace `[Club Name]` with club name — `ACM`
+  - [x] Replace `[Link to your repo]` with actual GitHub URL — `https://github.com/AanyaGarg1/AUTOJUDGE`
+  - [ ] Replace `[Your Video URL Here]` with demo video link
 
 2. **Verify all code:**
+
    - [ ] No personal passwords or API keys exposed
    - [ ] No hardcoded local paths (except relative paths like `./model.json`)
    - [ ] All imports are resolvable after `npm install`
    - [ ] Code is clean and well-commented
 
 3. **Create `.gitignore` (if not exists):**
+
    ```
    node_modules/
    .env
@@ -297,6 +327,7 @@ Your university requires:
    ```
 
 4. **Final commit:**
+
    ```bash
    git add -A
    git commit -m "Final submission: AutoJudge project ready for university evaluation"
@@ -316,24 +347,27 @@ Your university requires:
 ### Files to Submit
 
 **Via GitHub Repository:**
+
 1. Complete source code (all `.js`, `.jsx`, `.py`, `.json` files)
 2. README.md (comprehensive documentation)
 3. Trained models (model.json, metrics.json)
 4. Project structure (frontend/, etc.)
 
 **Via Email (to your professor/club):**
+
 1. GitHub repository URL (main submission)
 2. Report PDF (export REPORT.md to PDF)
 3. Demo video link (YouTube/Drive)
 4. Optional: student info file (name, email, student ID)
 
 ### Email Template
+
 ```
-Subject: AutoJudge Project Submission - [Your Name]
+Subject: AutoJudge Project Submission - Aanya Garg
 
 Dear [Professor/Club Name],
 
-I am submitting my project "AutoJudge: Predicting Programming Problem Difficulty" 
+I am submitting my project "AutoJudge: Predicting Programming Problem Difficulty"
 for evaluation.
 
 GitHub Repository: [Link]
@@ -351,7 +385,7 @@ The project includes:
 All code runs locally without errors. Instructions for running are in the README.
 
 Best regards,
-[Your Name]
+[Aanya Garg]
 [Student ID]
 [Email]
 ```
@@ -363,6 +397,7 @@ Best regards,
 Before submitting, verify:
 
 ### Code Quality
+
 - [ ] Code is clean and readable
 - [ ] Comments explain non-obvious sections
 - [ ] No console.log statements left (except important ones)
@@ -370,6 +405,7 @@ Before submitting, verify:
 - [ ] Code follows consistent style (indentation, naming)
 
 ### Documentation Quality
+
 - [ ] README is complete and accurate
 - [ ] All sections match actual implementation
 - [ ] Code examples in README are correct and tested
@@ -377,6 +413,7 @@ Before submitting, verify:
 - [ ] Report has proper structure and formatting
 
 ### Functionality
+
 - [ ] Backend server starts without errors
 - [ ] Frontend loads without console errors
 - [ ] Predictions work for all three classes
@@ -384,6 +421,7 @@ Before submitting, verify:
 - [ ] Error handling is graceful
 
 ### Submission Completeness
+
 - [ ] GitHub repository is public and accessible
 - [ ] All required files are present
 - [ ] README fields are filled with actual info
@@ -408,6 +446,7 @@ Before submitting, verify:
 ### Common Issues
 
 **Issue**: Port 5000 or 5173 already in use
+
 ```bash
 # On Windows
 netstat -ano | findstr :5000
@@ -419,6 +458,7 @@ kill -9 <PID>
 ```
 
 **Issue**: npm install fails
+
 ```bash
 # Clear cache and try again
 npm cache clean --force
@@ -426,10 +466,12 @@ npm install
 ```
 
 **Issue**: "Model loaded successfully" but predictions fail
+
 - Check that model.json exists and is valid JSON
 - Verify server logs for error messages
 
 **Issue**: Frontend connects but gets "Failed to get prediction"
+
 - Ensure backend server is running on port 5000
 - Check CORS settings in server.js
 - Verify firewall isn't blocking port 5000
@@ -438,7 +480,7 @@ npm install
 
 ## 🎉 You're Ready!
 
-Your AutoJudge project is **complete and submission-ready**. 
+Your AutoJudge project is **complete and submission-ready**.
 
 **Summary:**
 ✅ Complete source code (backend, frontend, ML)  
@@ -447,9 +489,10 @@ Your AutoJudge project is **complete and submission-ready**.
 ✅ Saved trained models with metrics  
 ✅ Web UI with live predictions  
 ✅ Evaluation metrics (98.6% accuracy, MAE ~85, RMSE ~120)  
-✅ Demo video guide (2–3 minutes)  
+✅ Demo video guide (2–3 minutes)
 
 **Next steps:**
+
 1. Fill in student info in README
 2. Record and upload demo video
 3. Convert REPORT.md to PDF
@@ -460,5 +503,5 @@ Your AutoJudge project is **complete and submission-ready**.
 
 ---
 
-*Document prepared: January 1, 2026*  
-*AutoJudge v1.0 - Ready for University Evaluation*
+_Document prepared: January 1, 2026_  
+_AutoJudge v1.0 - Ready for University Evaluation_
