@@ -459,9 +459,9 @@ Output:
   3. Live web UI demonstration with 3+ predictions
   4. Results and evaluation metrics discussion
 
-**Demo Video Link**: [Your Video URL Here]
+**Video Link**: [https://drive.google.com/file/d/155fK4lDUTz3rc2REZOgICTAByitKC81Y/view?usp=sharing]
 
-- **Platform**: YouTube / Google Drive / etc.
+- **Platform**: Google Drive .
 - **Status**: ✅ Uploaded and publicly accessible
 - **Shows**: Project running locally without errors
 
@@ -469,16 +469,16 @@ Output:
 
 ## 👤 Project Information
 
-| Field                 | Details              |
-| --------------------- | -------------------- |
-| **Project Name**      | AutoJudge            |
-| **Author**            | Aanya Garg           |
-| **Student ID**        | 24323001             |
-| **Email**             |                      |
-| **University**        | Indian Institute of Technology, Roorkee |
-| **Club/Department**   | ACM                  |
-| **Submission Date**   | January 1, 2026      |
-| **GitHub Repository** | [Link to your repo]  |
+| Field                 | Details                                    |
+| --------------------- | -------------------------------------------|
+| **Project Name**      | AutoJudge                                  |
+| **Author**            | Aanya Garg                                 |
+| **Student ID**        | 24323001                                   |
+| **Email**             |                                            |
+| **University**        | Indian Institute of Technology, Roorkee    |
+| **Club/Department**   | ACM                                        |
+| **Submission Date**   | January 1, 2026                            |
+| **GitHub Repository** | [https://github.com/AanyaGarg1/AUTOJUDGE]  |
 
 ---
 
@@ -561,9 +561,13 @@ For any clarifications regarding:
 
 ## 📋 License
 
-This project is submitted for academic evaluation. All rights reserved.
+This project is submitted by **Aanya Garg** for academic evaluation. All rights reserved.
 
 ---
 
-**Status**: ✅ Ready for University Submission  
+**Status**: ✅ Ready for Submission  
 **Last Updated**: January 1, 2026
+AANYA GARG
+IIT Roorkee
+24323001
+Mathematics and Computing
