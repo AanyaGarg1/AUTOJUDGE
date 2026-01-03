@@ -69,7 +69,7 @@ autojudge/
 ├── metrics.json                # Training evaluation metrics
 ├── package.json                # Backend dependencies
 ├── README.md                   # This file
-└── report.pdf                  # Detailed project report (4-8 pages)
+└── REPORT.pdf                  # Detailed project report (4-8 pages)
 ```
 
 ---
@@ -498,7 +498,7 @@ This GitHub repository contains:
 ### Documentation ✅
 
 - [README.md](README.md) — Complete project documentation (this file)
-- [report.pdf](report.pdf) — Detailed 4–8 page project report
+- [REPORT.pdf](REPORT.pdf) — Detailed 16 page project report
 
 ### Requirements Checklist ✅
 
