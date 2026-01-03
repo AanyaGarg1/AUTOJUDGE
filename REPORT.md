@@ -1,10 +1,10 @@
 # AutoJudge: Predicting Programming Problem Difficulty
 ## Detailed Project Report
 
-**Submitted By:** [Your Name]  
-**Student ID:** [Your ID]  
-**University:** [Your University]  
-**Club:** [Club Name]  
+**Submitted By:** [Aanya Garg]  
+**Student ID:** [24323001]  
+**University:** [IIT Roorkee]  
+**Club:** [ACM]  
 **Date:** January 1, 2026  
 
 ---
