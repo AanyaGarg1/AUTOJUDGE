@@ -228,7 +228,7 @@ npm install
 
 ---
 
-## 🎓 For Professors/Evaluators
+## 🎓 For Evaluators
 
 **Model Approach:**
 - Random Forest (200 trees) for classification and regression
