@@ -7,8 +7,6 @@
 
 ## 📋 Official Submission Requirements
 
-Your university requires:
-
 ### 1. ✅ Complete Source Code
 
 - [x] Data preprocessing (`generate_dataset.py`, `train_model.js`)
@@ -75,21 +73,6 @@ Your university requires:
 
 **Report length: ~3000+ words (4–8 pages when printed)** ✅
 
----
-
-### 5. ✅ Demo Video (2–3 Minutes)
-
-**Requirements:**
-
-- [x] Duration: 2–3 minutes
-- [x] Brief project explanation
-- [x] Model approach walkthrough
-- [x] Working web UI with live predictions
-- [x] No hosting required (local execution)
-
-**Action Item**: Upload video to YouTube/Google Drive and add link to README
-
----
 
 ## 📂 File Checklist
 
@@ -167,157 +150,9 @@ Your university requires:
 
 ---
 
-## 📹 Demo Video Production Guide
-
-### Video Content Structure (2–3 minutes)
-
-#### Segment 1: Introduction (0:00–0:20)
-
-- **What to show:**
-  - Brief title screen: "AutoJudge - Predicting Programming Problem Difficulty"
-  - 1-2 sentence explanation: "This project uses machine learning to automatically predict the difficulty of programming problems based on their text descriptions."
-  - Visual: Show the problem statement slide
-
-**Script:**
-
-> "AutoJudge is an intelligent system that automatically predicts the difficulty level and score of competitive programming problems using machine learning and natural language processing. The system analyzes problem descriptions and uses 7 engineered features to classify problems as Easy, Medium, or Hard."
-
----
-
-#### Segment 2: Model Approach (0:20–0:50)
-
-- **What to show:**
-  - Open README.md, show "Feature Engineering" section
-  - Show the 7 features table:
-    1. Text length (log-scale)
-    2. Math symbol count
-    3. Math symbol ratio
-    4. Vocabulary diversity
-    5. Simple keywords indicator
-    6. Medium keywords indicator
-    7. Hard keywords indicator
-  - Show Random Forest algorithm choice
-  - Show results: 98.6% accuracy, MAE ~85
-
-**Script:**
-
-> "The model uses 7 features extracted from problem text: Text length indicates complexity - longer problems are harder. Math symbols like ∑ and ∏ appear more in hard problems. Algorithmic keywords like 'dp', 'flow', and 'graph' strongly predict difficulty level. We trained a Random Forest classifier to predict the difficulty class and a regressor to predict the numerical score. The model achieved 98.6% classification accuracy and a mean absolute error of 85 points on the Codeforces scale."
-
----
-
-#### Segment 3: Live Web UI Demo (0:50–2:30)
-
-- **What to show:**
-  - Start both backend and frontend servers
-  - Open browser to http://localhost:5173
-  - **Test Case 1 (Easy)**:
-    - Input: "Given two numbers, find their sum"
-    - Input desc: "Two integers"
-    - Output desc: "One integer (sum)"
-    - Click "Predict Difficulty"
-    - Show result: Easy, ~850 score
-  - **Test Case 2 (Medium)**:
-    - Input: "Sort array and find elements appearing at least n/2 times"
-    - Input desc: "n integers"
-    - Output desc: "Elements appearing ≥ n/2 times"
-    - Show result: Medium, ~1200–1400 score
-  - **Test Case 3 (Hard)**:
-    - Input: "Compute minimum cost maximum flow in directed graph with ∑ capacity constraints"
-    - Input desc: "Adjacency matrix with capacities and costs"
-    - Output desc: "Maximum flow and minimum cost"
-    - Show result: Hard, ~2400+ score
-  - Show "AI Analysis Breakdown" with diagnostics for each prediction
-
-**Script (for each prediction):**
-
-> "Let's test the system with a few examples. Here's an easy problem about summing two numbers. The model instantly predicts 'Easy' with a score of 850. The AI analysis shows low text density, no math symbols, and simple keywords detected."
-
-> "Now, a medium problem about sorting and finding majority elements. The prediction shows 'Medium' with a score of 1300, identifying the algorithmic component."
-
-> "Finally, a hard problem about max flow in a graph. The model predicts 'Hard' with a score of 2400, correctly identifying the advanced algorithmic nature."
-
----
-
-#### Segment 4: Closing (2:30–3:00)
-
-- **What to show:**
-  - Brief screenshot of README
-  - Mention evaluation metrics once more
-  - Call to action: "Project available on GitHub with full source code and documentation"
-
-**Script:**
-
-> "The AutoJudge system successfully demonstrates that problem difficulty can be automatically predicted from text descriptions. The 98.6% classification accuracy and 85-point MAE on the Codeforces scale show the model's effectiveness. All source code, trained models, and documentation are available on GitHub. Thank you!"
-
----
-
-### Video Recording Tips
-
-1. **Record at 1080p (1920×1080)** for clarity
-2. **Use a screen recorder**: OBS, Camtasia, ScreenFlow, or built-in tools
-3. **Speak clearly** and at a moderate pace
-4. **Record on a quiet machine** to avoid background noise
-5. **Crop/zoom** to highlight important UI elements
-6. **Use screen overlays** to point to features (optional)
-7. **Test before recording** to ensure backend/frontend are working
-8. **Keep the demo smooth** — pre-test all inputs to avoid long loading times
-
----
-
-### Video Upload & Sharing
-
-1. **Upload to YouTube** (unlisted or public) or **Google Drive** (shared link)
-2. **Get shareable link** from platform
-3. **Add link to README.md** under "Demo Video Link" section
-4. **Test link** before submission to ensure it's accessible
-
-**Example README entry:**
-
-```markdown
-## 📹 Demo Video Link
-
-**Duration**: 2:45 minutes
-
-**Video Contents:**
-
-- Project overview and problem statement
-- Feature engineering approach (7 features)
-- Random Forest model architecture
-- Live web UI demonstration with 3 sample predictions
-- Results and evaluation metrics
-
-**Watch Demo**: [https://youtu.be/YOUR-VIDEO-ID](https://youtu.be/YOUR-VIDEO-ID)
-
-- **Status**: ✅ Public, accessible to evaluators
-- **Platform**: YouTube
-```
-
----
-
 ## 🔗 GitHub Repository Preparation
 
-### Before Final Push
 
-1. **Update README fields:**
-
-  - [x] Replace `[Your Full Name]` with actual name — `Aanya Garg`
-  - [x] Replace `[Your Student ID]` with ID — `24323001`
-  - [ ] Replace `[Your Email]` with email
-  - [x] Replace `[Your University]` with university name — `Indian Institute of Technology, Roorkee`
-  - [x] Replace `[Club Name]` with club name — `ACM`
-  - [x] Replace `[Link to your repo]` with actual GitHub URL — `https://github.com/AanyaGarg1/AUTOJUDGE`
-  - [ ] Replace `[Your Video URL Here]` with demo video link
-
-2. **Verify all code:**
-
-   - [ ] No personal passwords or API keys exposed
-   - [ ] No hardcoded local paths (except relative paths like `./model.json`)
-   - [ ] All imports are resolvable after `npm install`
-   - [ ] Code is clean and well-commented
-
-3. **Create `.gitignore` (if not exists):**
-
-   ```
    node_modules/
    .env
    .DS_Store
@@ -334,67 +169,9 @@ Your university requires:
    git push origin main
    ```
 
-5. **Verify on GitHub:**
-   - [ ] All files are visible on GitHub
-   - [ ] README displays correctly (markdown formatted)
-   - [ ] No sensitive information exposed
-   - [ ] Links to demo video work
 
----
-
-## 📧 Submission Instructions
-
-### Files to Submit
-
-**Via GitHub Repository:**
-
-1. Complete source code (all `.js`, `.jsx`, `.py`, `.json` files)
-2. README.md (comprehensive documentation)
-3. Trained models (model.json, metrics.json)
-4. Project structure (frontend/, etc.)
-
-**Via Email (to your professor/club):**
-
-1. GitHub repository URL (main submission)
-2. Report PDF (export REPORT.md to PDF)
-3. Demo video link (YouTube/Drive)
-4. Optional: student info file (name, email, student ID)
-
-### Email Template
-
-```
-Subject: AutoJudge Project Submission - Aanya Garg
-
-Dear [Professor/Club Name],
-
-I am submitting my project "AutoJudge: Predicting Programming Problem Difficulty"
-for evaluation.
-
-GitHub Repository: [Link]
-Demo Video: [Link]
-Report: [Attached or link]
-
-The project includes:
-- Complete source code (backend, frontend, ML models)
-- Comprehensive README with setup instructions
-- Trained classification and regression models
-- Detailed evaluation metrics (98.6% accuracy, MAE ~85)
-- 2–3 minute demo video showing the system in action
-- Detailed project report (4–8 pages)
-
-All code runs locally without errors. Instructions for running are in the README.
-
-Best regards,
-[Aanya Garg]
-[Student ID]
-[Email]
-```
-
----
 
 ## ✅ Final Verification Checklist
-
-Before submitting, verify:
 
 ### Code Quality
 
@@ -430,16 +207,6 @@ Before submitting, verify:
 
 ---
 
-## 🎓 Submission Deadlines & Tips
-
-- **Submit GitHub repo**: At least 24 hours before deadline
-- **Test thoroughly**: On a fresh machine if possible
-- **Keep a backup**: Local backup of everything
-- **Follow format**: Match exactly what your university requires
-- **Double-check links**: Ensure video and report links are working
-- **Proofread**: README and report for typos/errors
-
----
 
 ## 📞 Troubleshooting
 
@@ -478,10 +245,6 @@ npm install
 
 ---
 
-## 🎉 You're Ready!
-
-Your AutoJudge project is **complete and submission-ready**.
-
 **Summary:**
 ✅ Complete source code (backend, frontend, ML)  
 ✅ Comprehensive README.md  
@@ -490,18 +253,6 @@ Your AutoJudge project is **complete and submission-ready**.
 ✅ Web UI with live predictions  
 ✅ Evaluation metrics (98.6% accuracy, MAE ~85, RMSE ~120)  
 ✅ Demo video guide (2–3 minutes)
-
-**Next steps:**
-
-1. Fill in student info in README
-2. Record and upload demo video
-3. Convert REPORT.md to PDF
-4. Push to GitHub
-5. Submit GitHub link to your university
-
-**Good luck with your submission!** 🚀
-
----
 
 _Document prepared: January 1, 2026_  
 _AutoJudge v1.0 - Ready for University Evaluation_
