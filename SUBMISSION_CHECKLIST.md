@@ -104,8 +104,6 @@
 
 ---
 
-## 🚀 Pre-Submission Testing Checklist
-
 ### Backend Setup
 
 - [ ] **Step 1**: Install Node.js (v16+)
@@ -149,27 +147,6 @@
 - [ ] [ ] All sections of README match actual implementation
 
 ---
-
-## 🔗 GitHub Repository Preparation
-
-
-   node_modules/
-   .env
-   .DS_Store
-   *.log
-   dist/
-   build/
-   ```
-
-4. **Final commit:**
-
-   ```bash
-   git add -A
-   git commit -m "Final submission: AutoJudge project ready for university evaluation"
-   git push origin main
-   ```
-
-
 
 ## ✅ Final Verification Checklist
 
