@@ -261,7 +261,7 @@ View detailed metrics in [metrics.json](metrics.json)
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/autojudge.git
+git clone https://github.com/AanyaGarg1/autojudge.git
 cd autojudge
 ```
 
